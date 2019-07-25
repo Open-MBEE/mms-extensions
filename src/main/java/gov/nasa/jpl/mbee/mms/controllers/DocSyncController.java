@@ -58,6 +58,11 @@ public class DocSyncController {
             Utils.removeKeys(pes.values(), removeKeys);
             Utils.removeKeys(slots.values(), removeKeys);
             Map<String, Object> ownerSet = new HashMap<>();
+            if (request.getExtraKey() != null && request.getExtraValue() != null) {
+                ownerSet.put(request.getExtraKey(), request.getExtraValue());
+                Utils.setKeys(views.values(), ownerSet);
+                Utils.setKeys(slots.values(), ownerSet);
+            }
             ownerSet.put("ownerId", "view_instances_bin_" + toProjectId);
             Utils.setKeys(pes.values(), ownerSet);
             
@@ -84,7 +89,7 @@ public class DocSyncController {
             return HttpResponse.ok(response);
         } catch (Exception e) {
             logger.error("Failed: ", e);
-            return HttpResponse.badRequest();
+            return HttpResponse.serverError(e);
         }
     }
 }

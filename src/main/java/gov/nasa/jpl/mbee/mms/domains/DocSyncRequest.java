@@ -26,6 +26,10 @@ public class DocSyncRequest {
 
     private String comment;
 
+    private String extraKey;
+
+    private String extraValue;
+
     public DocSyncRequest() {
     }
 
@@ -107,6 +111,22 @@ public class DocSyncRequest {
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    public String getExtraKey() {
+        return extraKey;
+    }
+
+    public void setExtraKey(String extraKey) {
+        this.extraKey = extraKey;
+    }
+
+    public String getExtraValue() {
+        return extraValue;
+    }
+
+    public void setExtraValue(String extraValue) {
+        this.extraValue = extraValue;
     }
 
     public String toString() {
