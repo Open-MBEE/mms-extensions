@@ -21,7 +21,8 @@ import java.util.stream.Stream;
 
 /**
  * Created by dlam on 7/26/18.
- * sync a doc (pes) from one mms server to another, same project, can be different ref
+ * sync a doc (pes) from one mms server to another, same project, can be different ref, assumes view hierarchy
+ * on destination is already established
  */
 @Controller("/mms-sync-doc")
 public class DocSyncController {
@@ -59,6 +60,9 @@ public class DocSyncController {
             Utils.removeKeys(slots.values(), removeKeys);
             Map<String, Object> ownerSet = new HashMap<>();
             if (request.getExtraKey() != null && request.getExtraValue() != null) {
+                //extra key is for resurrecting deleted element on target
+                //the key should be prefixed with underscore to indiciate it should be ignored by mdk
+                //value can be anything (ex. key can be _dummy and value can be empty string
                 ownerSet.put(request.getExtraKey(), request.getExtraValue());
                 Utils.setKeys(views.values(), ownerSet);
                 Utils.setKeys(slots.values(), ownerSet);

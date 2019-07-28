@@ -50,7 +50,7 @@ public class DocInfoController {
             Map<String, Object> response = new HashMap<>();
             response.put("views", views.values());
             response.put("instances", pes.values());
-            response.put("slots", slots.values());
+            //response.put("slots", slots.values());
             return HttpResponse.ok(response);
         } catch (Exception e) {
             logger.error("Failed: ", e);
