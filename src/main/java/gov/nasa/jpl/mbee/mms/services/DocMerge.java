@@ -125,7 +125,7 @@ public class DocMerge {
     }
 
     private void handleViewOrPe(Element fromElement, Element elementAtCommit, Element toElement) {
-        if (postElements.containsKey(fromElement.get("id"))) {
+        if (fromElement == null || postElements.containsKey(fromElement.get("id"))) {
             return;
         }
         fromElement.remove("_childViews");
